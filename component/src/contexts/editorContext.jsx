@@ -20,9 +20,10 @@ export const EditorProvider = ({ children }) => {
   const state = useEditorState(editorRef, updateDataAttributes);
   const { insertTable, addTableRow, addTableColumn, insertLayout } = useTableOperations(editorRef);
   const headingState = useHeadingState();
+  
   const getHtml = useCallback(() => {
     return editorRef.current ? editorRef.current.innerHTML : '';
-  }, []);
+  }, [editorRef]);
 
   const getJson = useCallback(() => {
     if (!editorRef.current) return null;

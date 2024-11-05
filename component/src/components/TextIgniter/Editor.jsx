@@ -1,24 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useEditor } from "../../contexts/editorContext.jsx";
 import "../../index.css";
 
+const placeCursorTextEnd = (el) => {
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  range.collapse(false);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
+
+
 const Editor = ({ height = "300px" }) => {
   const { editorRef, wordCount, charCount } = useEditor();
-
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.focus();
-    }
-  }, [editorRef]);
 
   return (
     <>
       {/* main editor */}
       <div
-        id="editor"
         ref={editorRef}
         contentEditable
         className="editor-content"
+        onFocus={() => placeCursorTextEnd(editorRef.current)}
         style={{
           minHeight: height,
           padding: "10px",

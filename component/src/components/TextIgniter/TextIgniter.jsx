@@ -21,8 +21,10 @@ const TextIgniterContent = forwardRef(
     }));
 
     useEffect(() => {
-      if (editorRef?.current && !!defaultContent)
-        editorRef.current.innerHTML = defaultContent;
+      
+      if (editorRef?.current && !!defaultContent) {
+       editorRef.current.innerHTML = defaultContent;
+      }
     }, []);
 
     useEffect(() => {
