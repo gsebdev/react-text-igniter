@@ -232,6 +232,7 @@ const Toolbar = ({ features }) => {
       <IconDropDown
         icon={<Icons.HeadingIcon />}
         items={[
+          { value: "p", label: "Paragraph" },
           { value: "h1", label: "Heading 1" },
           { value: "h2", label: "Heading 2" },
           { value: "h3", label: "Heading 3" },

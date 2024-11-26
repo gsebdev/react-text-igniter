@@ -4,15 +4,28 @@ import Tooltip from "./ToolTip";
 
 const AppButton = ({ type = "primary", children, onClick, disabled = false }) => {
   const className = `button button-${type}`;
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick();
+  }
 
   return (
-    <button className={className} onClick={onClick} disabled={disabled}>
+    <button className={className} onClick={handleClick} disabled={disabled}>
       {children}
     </button>
   );
 };
 
 const IconButton = ({ children, onClick, id, toolTip, isActive }) => {
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick();
+  }
+
   return (
     <Tooltip text={toolTip}>
       <style>
@@ -26,7 +39,7 @@ const IconButton = ({ children, onClick, id, toolTip, isActive }) => {
       <div
         className={`toolbarBtnDiv ${isActive ? "active" : ""}`}
       >
-        <button className="toolbarBtn" onClick={onClick} id={id}>
+        <button className="toolbarBtn" onClick={handleClick} id={id}>
           {children}
         </button>
       </div>
@@ -37,8 +50,22 @@ const IconButton = ({ children, onClick, id, toolTip, isActive }) => {
 const LinkButton = ({ text, url, onEdit, onDelete }) => {
   const [hover, setHover] = useState(false);
 
-  const handleClick = () => {
+  const handleClickLinkBtn = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const handleClickEdit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onEdit();
+  };
+
+  const handleClickDel = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onDelete();
   };
 
   return (
@@ -48,7 +75,7 @@ const LinkButton = ({ text, url, onEdit, onDelete }) => {
       onMouseLeave={() => setHover(false)}
       style={{ display: "inline-block", position: "relative" }}
     >
-      <button className="link-button" onClick={handleClick}>
+      <button className="link-button" onClick={handleClickLinkBtn}>
         {text}
       </button>
     
