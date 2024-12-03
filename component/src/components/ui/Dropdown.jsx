@@ -19,7 +19,7 @@ const IconDropDown = ({ items, onChange, icon, id, openRight, toolTip }) => {
   return (
     <div className={`icon-dropdown ${openRight ? "open-right" : ""}`}>
       <Tooltip text={toolTip}>
-        <button className="dropbtn" id={id} onMouseDown={handleButtonClick}>
+        <button className="dropbtn" id={id} onMouseDown={handleButtonClick} onClick={(e)=> {e.preventDefault(); e.stopPropagation()}}>
           {icon}
         </button>
       </Tooltip>
