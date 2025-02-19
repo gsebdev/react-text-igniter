@@ -17,10 +17,10 @@ const IconDropDown = ({ items, onChange, icon, id, openRight, toolTip }) => {
   };
 
   return (
-    <div className={`icon-dropdown ${openRight ? 'open-right' : ''}`}>
+    <div className={`sg-text__icon-dropdown ${openRight ? 'open-right' : ''}`}>
       <Tooltip text={toolTip}>
         <button
-          className="dropbtn"
+          className="sg-text__dropbtn"
           id={id}
           onMouseDown={handleButtonClick}
           onClick={(e) => {
@@ -32,14 +32,14 @@ const IconDropDown = ({ items, onChange, icon, id, openRight, toolTip }) => {
         </button>
       </Tooltip>
       {isOpen && (
-        <div className="icon-dropdown-content">
+        <div className="sg-text__icon-dropdown-content">
           {items.map((item, index) => (
             <div
               key={index}
-              className="dropdown-item"
+              className="sg-text__dropdown-item"
               onMouseDown={(e) => handleItemClick(item.value, e)}
             >
-              {item.icon && <span className="dropdown-icon">{item.icon}</span>}
+              {item.icon && <span className="sg-text__dropdown-icon">{item.icon}</span>}
               {item.label}
             </div>
           ))}

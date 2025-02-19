@@ -20,7 +20,7 @@ const Editor = ({ height = '300px' }) => {
       <div
         ref={editorRef}
         contentEditable
-        className="editor-content"
+        className="sg-text__editor-content"
         onFocus={() => placeCursorTextEnd(editorRef.current)}
         style={{
           minHeight: height,
@@ -29,7 +29,7 @@ const Editor = ({ height = '300px' }) => {
         }}
       />
       {/* footer */}
-      <div className="editor-footer">
+      <div className="sg-text__editor-footer">
         <span>Words: {wordCount}</span> | <span>Chars: {charCount}</span>
       </div>
     </>

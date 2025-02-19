@@ -1,14 +1,14 @@
-.dropbtn {
+.sg-text__dropbtn {
   padding: 8px 16px;
   cursor: pointer;
 }
 
-.icon-dropdown {
+.sg-text__icon-dropdown {
   position: relative;
   display: inline-block;
 }
 
-.icon-dropdown-content {
+.sg-text__icon-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -16,66 +16,66 @@
   z-index: 1;
 }
 
-.icon-dropdown .open-right .icon-dropdown-content {
+.sg-text__icon-dropdown .sg-text__open-right .sg-text__icon-dropdown-content {
   display: block;
   right: 0;
 }
 
-.dropdown-item {
+.sg-text__dropdown-item {
   padding: 8px 16px;
   cursor: pointer;
 }
 
-.dropdown-item:hover {
+.sg-text__dropdown-item:hover {
   background-color: #f1f1f1;
 }
 
 /* Specific styles for each type */
-.normal {
+.sg-text__normal {
   font-weight: normal;
 }
 
-.paragraph {
+.sg-text__paragraph {
   font-size: 14px;
 }
 
-.heading1 {
+.sg-text__heading1 {
   font-size: 20px;
   font-weight: bold;
 }
 
-.heading2 {
+.sg-text__heading2 {
   font-size: 16px;
   font-weight: bold;
 }
 
-.heading3 {
+.sg-text__heading3 {
   font-size: 14px;
   font-weight: bold;
 }
 
-.heading4 {
+.sg-text__heading4 {
   font-size: 12px;
   font-weight: bold;
   font-style: italic;
 }
 
-.title {
+.sg-text__title {
   font-size: 28px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.subtitle {
+.sg-text__subtitle {
   font-size: 14px;
 }
 
-.strong {
+.sg-text__strong {
     font-size: 12px;
     font-weight: bold;
 }
 
-.book-title {
+.sg-text__book-title {
     font-size: 12px;
     font-weight: bold;
     font-style: italic;

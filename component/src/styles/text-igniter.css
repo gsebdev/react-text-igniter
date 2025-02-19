@@ -1,20 +1,20 @@
 /* Main editor container */
-.editor-container {
+.sg-text__editor-container {
   position: relative;
   text-align: left;
   color: black;
 }
 
 /* Toolbar styles */
-.toolbar {
+.sg-text__toolbar {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   background-color: white;
 }
 
-.toolbar .toolbarBtn,
-.toolbar select {
+.sg-text__toolbar .sg-text__toolbarBtn,
+.sg-text__toolbar select {
   padding: 5px;
   cursor: pointer;
   border: none;
@@ -22,7 +22,7 @@
 }
 
 /* Main editor area */
-.editor-content {
+.sg-text__editor-content {
   padding: 10px;
   min-height: 400px;
   overflow: auto;
@@ -30,14 +30,14 @@
 }
 
 /* Individual editor blocks */
-.editor-block {
+.sg-text__editor-block {
   margin-bottom: 10px;
   padding: 10px;
   min-height: 40px;
 }
 
 /* Active editor block */
-.editor-block.active {
+.sg-text__editor-block.active {
   border: 1px solid blue;
 }
 
@@ -48,7 +48,7 @@ img {
 }
 
 /* Editor footer (word/character count) */
-.editor-footer {
+.sg-text__editor-footer {
   position: relative;
   bottom: 0;
   left: 0;
@@ -57,7 +57,7 @@ img {
   font-size: 12px;
 }
 
-.table-select {
+.sg-text__table-select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -66,11 +66,11 @@ img {
   cursor: pointer;
 }
 
-.table-select:hover {
+.sg-text__table-select:hover {
   border-color: #888;
 }
 
-.table-select:focus {
+.sg-text__table-select:focus {
   outline: none;
   border-color: #0066cc;
   box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);

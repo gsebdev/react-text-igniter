@@ -8,7 +8,7 @@ const AppButton = ({
   onClick,
   disabled = false,
 }) => {
-  const className = `button button-${type}`;
+  const className = `sg-text__button sg-text__button-${type}`;
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -32,16 +32,8 @@ const IconButton = ({ children, onClick, id, toolTip, isActive }) => {
 
   return (
     <Tooltip text={toolTip}>
-      <style>
-        {`
-          .toolbarBtnDiv.active {
-            background-color: #ddd; /* Highlighted background color */
-            border: 1px solid #333; /* Highlighted border */
-          }
-        `}
-      </style>
-      <div className={`toolbarBtnDiv ${isActive ? 'active' : ''}`}>
-        <button className="toolbarBtn" onClick={handleClick} id={id}>
+      <div className={`sg-text__toolbarBtnDiv ${isActive ? 'active' : ''}`}>
+        <button className="sg-text__toolbarBtn" onClick={handleClick} id={id}>
           {children}
         </button>
       </div>
@@ -72,18 +64,18 @@ const LinkButton = ({ text, url, onEdit, onDelete }) => {
 
   return (
     <div
-      className="link-button-container"
+      className="sg-text__link-button-container"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{ display: 'inline-block', position: 'relative' }}
     >
-      <button className="link-button" onClick={handleClickLinkBtn}>
+      <button className="sg-text__link-button" onClick={handleClickLinkBtn}>
         {text}
       </button>
 
       {hover && (
         <div
-          className="link-options"
+          className="sg-text__link-options"
           style={{
             position: 'absolute',
             top: '100%',
@@ -94,10 +86,10 @@ const LinkButton = ({ text, url, onEdit, onDelete }) => {
             padding: '4px',
           }}
         >
-          <button className="toolbarBtn" onClick={onEdit} id="linkEditBtn">
+          <button className="sg-text__toolbarBtn" onClick={onEdit} id="linkEditBtn">
             Edit
           </button>
-          <button className="toolbarBtn" onClick={onDelete} id="linkDelBtn">
+          <button className="sg-text__toolbarBtn" onClick={onDelete} id="linkDelBtn">
             Delete
           </button>
         </div>

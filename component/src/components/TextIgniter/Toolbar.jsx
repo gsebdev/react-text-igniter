@@ -247,8 +247,8 @@ const Toolbar = ({ features }) => {
   };
 
   return (
-    <div className="toolbar">
-      <div className="toolbar-switch">
+    <div className="sg-text__toolbar">
+      <div className="sg-text__toolbar-switch">
         <label>
           <input
             type="checkbox"

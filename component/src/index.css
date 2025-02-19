@@ -12,17 +12,9 @@ code {
     monospace;
 }
 
-.toolbarBtnDiv.active {
+.sg-text__toolbarBtnDiv.active {
   background-color: #ddd;
   /* Highlighted background color */
   border: 1px solid #333;
   /* Highlighted border */
-}
-
-
-.link-btn {
-  background-color: transparent;
-  border: none;
-  color: blue;
-  cursor: pointer;
 }

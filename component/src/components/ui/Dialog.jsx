@@ -66,17 +66,17 @@ const ImageUploadSelectionDialog = ({
   if (!isOpen) return null;
 
   return (
-    <div className="dialog-overlay">
-      <div className="dialog-container">
-        <div className="dialog-header">
+    <div className="sg-text__dialog-overlay">
+      <div className="sg-text__dialog-container">
+        <div className="sg-text__dialog-header">
           {title}
           <IconButton onClick={onClose} id="dialogClose">
             <Icons.CloseIcon />
           </IconButton>
         </div>
-        <div className="dialog-body">
-          <div className="container">
-            <label htmlFor="file-input" className="custom-file-input">
+        <div className="sg-text__dialog-body">
+          <div className="sg-text__container">
+            <label htmlFor="file-input" className="sg-text__custom-file-input">
               {!file ? 'Select file' : 'Reselect file'}
             </label>
             <input
@@ -86,15 +86,15 @@ const ImageUploadSelectionDialog = ({
               onChange={handleFileChange}
             />
             {file && (
-              <div className="file-info">
+              <div className="sg-text__file-info">
                 <p>Selected file: {file.name} </p>
                 <p>File size: {(file.size / 1024).toFixed(2)} KB</p>
               </div>
             )}
-            {error && <p className="error">{error}</p>}
+            {error && <p className="sg-text__error">{error}</p>}
           </div>
         </div>
-        <div className="dialog-footer">
+        <div className="sg-text__dialog-footer">
           <AppButton type="cancel" onClick={closeDialog}>
             Cancel
           </AppButton>
@@ -169,36 +169,36 @@ const FileUrlDialog = ({
   if (!isOpen) return null;
 
   return (
-    <div className="dialog-overlay">
-      <div className="dialog-container">
-        <div className="dialog-header">
+    <div className="sg-text__dialog-overlay">
+      <div className="sg-text__dialog-container">
+        <div className="sg-text__dialog-header">
           {'Enter Title'}
           <IconButton onClick={onClose} id="dialogClose">
             <Icons.CloseIcon />
           </IconButton>
         </div>
-        <div className="dialog-body">
-          <div className="container">
+        <div className="sg-text__dialog-body">
+          <div className="sg-text__container">
             <input
               type="text"
-              className="image-url-input"
+              className="sg-text__image-url-input"
               placeholder="Texte du lien"
               value={text}
               onChange={handleLinkText}
             />
           </div>
-          <div className="container">
+          <div className="sg-text__container">
             <input
               type="text"
-              className="image-url-input"
+              className="sg-text__image-url-input"
               placeholder="URL du lien"
               value={url}
               onChange={handleLinkUrl}
             />
-            {error && <p className="error">{error}</p>}
+            {error && <p className="sg-text__error">{error}</p>}
           </div>
         </div>
-        <div className="dialog-footer">
+        <div className="sg-text__dialog-footer">
           <AppButton type="cancel" onClick={closeDialog}>
             Annuler
           </AppButton>

@@ -29,7 +29,7 @@ const TextIgniterContent = forwardRef(
     }, [html, onChange]);
 
     return (
-      <div className="editor-container">
+      <div className="sg-text__editor-container">
         <Toolbar features={features} />
         <Editor height={height} />
       </div>

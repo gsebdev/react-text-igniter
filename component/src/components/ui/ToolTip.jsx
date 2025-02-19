@@ -3,8 +3,8 @@ import '../../styles/ui-component.css';
 
 const Tooltip = ({ text, children }) => {
   return text ? (
-    <div className="tooltip-container">
-      <div className="tooltip">{text}</div>
+    <div className="sg-text__tooltip-container">
+      <div className="sg-text__tooltip">{text}</div>
       {children}
     </div>
   ) : (

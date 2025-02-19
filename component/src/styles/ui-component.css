@@ -1,19 +1,19 @@
 :root {
   /* Color variables */
-  --primary-bg: white;
-  --primary-color: gray;
-  --primary-textColor: black;
-  --hover-bg: black;
-  --hover-color: black;
-  --border-color: black;
-  --border-hover-color: rgb(185, 183, 183);
-  --cancel-border-hover: red;
-  --overlay-bg: #00000080;
-  --container-bg: #f0f0f0;
-  --common-padding: 6px 10px;
-  --common-hover-padding: 8px 12px;
+  --sg-text-primary-bg: white;
+  --sg-text-primary-color: gray;
+  --sg-text-primary-textColor: black;
+  --sg-text-hover-bg: black;
+  --sg-text-hover-color: black;
+  --sg-text-border-color: black;
+  --sg-text-border-hover-color: rgb(185, 183, 183);
+  --sg-text-cancel-border-hover: red;
+  --sg-text-overlay-bg: #00000080;
+  --sg-text-container-bg: #f0f0f0;
+  --sg-text-common-padding: 6px 10px;
+  --sg-text-common-hover-padding: 8px 12px;
   /* Box shadow variable */
-  --box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.4);
+  --sg-text-box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* 
@@ -22,7 +22,7 @@
  ========================================
  */
 /* General button styles */
-.button {
+.sg-text__button {
   padding: 10px 20px;
   font-size: 14px;
   border-radius: 4px;
@@ -30,38 +30,38 @@
   transition: all 0.3s ease;
   display: inline-block;
   margin: 2px;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--sg-text-border-color);
 }
 
 /* Primary button styles */
-.button-primary {
-  background: var(--primary-bg);
-  color: var(--primary-color);
+.sg-text__button-primary {
+  background: var(--sg-text-primary-bg);
+  color: var(--sg-text-primary-color);
 }
 
-.button-primary:hover {
-  color: var(--hover-color);
-  box-shadow: var(--box-shadow);
+.sg-text__button-primary:hover {
+  color: var(--sg-text-hover-color);
+  box-shadow: var(--sg-text-box-shadow);
 }
 
 /* Cancel button styles */
-.button-cancel {
-  background: var(--primary-bg);
-  color: var(--primary-color);
+.sg-text__button-cancel {
+  background: var(--sg-text-primary-bg);
+  color: var(--sg-text-primary-color);
 }
 
-.button-cancel:hover {
-  border: 2px solid var(--cancel-border-hover);
-  color: var(--hover-color);
-  box-shadow: var(--box-shadow);
+.sg-text__button-cancel:hover {
+  border: 2px solid var(--sg-text-cancel-border-hover);
+  color: var(--sg-text-hover-color);
+  box-shadow: var(--sg-text-box-shadow);
 }
 
-.toolbarBtn {
+.sg-text__toolbarBtn {
   padding: 0;
   margin: 0;
 }
 
-.toolbarBtnDiv {
+.sg-text__toolbarBtnDiv {
   display: grid;
   padding: 2px;
   text-align: center;
@@ -71,32 +71,18 @@
   cursor: pointer;
 }
 
-.toolbarBtnDiv:hover {
+.sg-text__toolbarBtnDiv:hover {
   padding: 0px;
   padding: 2px;
   border-radius: 4px;
 }
 
-.toolbarBtnDiv.active {
+.sg-text__toolbarBtnDiv.active {
   padding: 0px;
-  border: 2px solid var(--border-hover-color);
+  border: 2px solid var(--sg-text-border-hover-color);
   border-radius: 2px;
-}
-
-
-.link-button {
-  background: none;
-  border: none;
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-}
-
-.link-button:hover {
-  color: darkblue;
+  background-color: #ddd; /* Highlighted background color */
+  border: 1px solid #333; /* Highlighted border */
 }
 
 /* 
@@ -104,21 +90,21 @@
  DROPDOWN
  ========================================
  */
-.icon-dropdown {
+.sg-text__icon-dropdown {
   position: relative;
   display: inline-block;
 }
 
-.icon-dropdown select {
+.sg-text__icon-dropdown select {
   display: none;
   /* Hide the native select element */
 }
 
-.icon-dropdown .dropbtn {
+.sg-text__icon-dropdown .sg-text__dropbtn {
   display: inline-block;
-  color: var(--primary-textColor);
+  color: var(--sg-text-primary-textColor);
   text-align: center;
-  padding: var(--common-padding);
+  padding: var(--sg-text-common-padding);
   text-decoration: none;
   background-color: white;
   font-size: 14px;
@@ -126,44 +112,44 @@
   cursor: pointer;
 }
 
-.icon-dropdown .dropbtn:hover,
-.icon-dropdown:hover .dropbtn {
+.sg-text__icon-dropdown .sg-text__dropbtn:hover,
+.sg-text__icon-dropdown:hover .sg-text__dropbtn {
   background-color: #f1f1f1;
   border-radius: 4px;
 }
 
-.icon-dropdown-content {
+.sg-text__icon-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   padding-top: 4px;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.sg-text__2);
   z-index: 1;
 }
 
-.icon-dropdown-content .dropdown-item {
+.sg-text__icon-dropdown-content .sg-text__dropdown-item {
   color: black;
-  padding: var(--common-padding);
+  padding: var(--sg-text-common-padding);
   font-size: 12px;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
-.icon-dropdown-content .dropdown-item:hover {
-  padding: var(--common-hover-padding);
+.sg-text__icon-dropdown-content .sg-text__dropdown-item:hover {
+  padding: var(--sg-text-common-hover-padding);
   background-color: #f1f1f1;
   font-size: 12px;
-  border: 2px solid var(--border-hover-color);
+  border: 2px solid var(--sg-text-border-hover-color);
   border-radius: 4px;
 }
 
-.icon-dropdown:hover .icon-dropdown-content {
+.sg-text__icon-dropdown:hover .sg-text__icon-dropdown-content {
   display: block;
 }
 
-.icon-dropdown.open-right .icon-dropdown-content {
+.sg-text__icon-dropdown.open-right .sg-text__icon-dropdown-content {
   margin-left: 8px;
   left: 100%;
   top: 0;
@@ -174,12 +160,12 @@
  TOOLTIP
  ========================================
 */
-.tooltip-container {
+.sg-text__tooltip-container {
   position: relative;
   display: inline-block;
 }
 
-.tooltip {
+.sg-text__tooltip {
   height: auto;
   background-color: black;
   font-size: 12px;
@@ -199,7 +185,7 @@
   transition: opacity 0.3s;
 }
 
-.tooltip-container:hover .tooltip {
+.sg-text__tooltip-container:hover .sg-text__tooltip {
   opacity: 1;
   display: block;
 }
@@ -210,13 +196,13 @@
  ========================================
  */
 /* Dialog overlay */
-.dialog-overlay {
+.sg-text__dialog-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--overlay-bg);
+  background: var(--sg-text-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,18 +210,18 @@
 }
 
 /* Dialog container */
-.dialog-container {
-  background: var(--primary-bg);
+.sg-text__dialog-container {
+  background: var(--sg-text-primary-bg);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--sg-text-box-shadow);
   width: 400px;
   max-width: 100%;
   z-index: 1001;
 }
 
 /* Dialog header */
-.dialog-header {
+.sg-text__dialog-header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -246,18 +232,18 @@
 }
 
 /* Dialog body */
-.dialog-body {
+.sg-text__dialog-body {
   margin-bottom: 20px;
   font-size: 16px;
 }
 
 /* Dialog footer */
-.dialog-footer {
+.sg-text__dialog-footer {
   text-align: right;
 }
 
 /* Close button */
-.close-button {
+.sg-text__close-button {
   background: none;
   border: none;
   font-size: 20px;
@@ -268,17 +254,17 @@
 }
 
 /* General container styles */
-.container {
+.sg-text__container {
   display: flex;
   flex-direction: column;
   padding: 12px 16px;
   justify-content: center;
   align-items: center;
-  background-color: var(--container-bg);
+  background-color: var(--sg-text-container-bg);
 }
 
 /* Image URL input */
-.container .image-url-input {
+.sg-text__container .sg-text__image-url-input {
   width: 90%;
   padding: 12px 16px;
   border-radius: 6px;
@@ -287,7 +273,7 @@
 }
 
 /* OR divider */
-.container .or-divider {
+.sg-text__container .sg-text__or-divider {
   margin: 10px;
 }
 
@@ -297,37 +283,37 @@
 }
 
 /* Focus styles for form inputs */
-.form-group input:focus {
+.sg-text__form-group input:focus {
   outline: none;
   border-color: #1778f2;
 }
 
 /* Custom file input label */
-.custom-file-input {
+.sg-text__custom-file-input {
   display: inline-block;
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
-  background: var(--primary-bg);
-  color: var(--primary-color);
-  border: 2px solid var(--border-color);
+  background: var(--sg-text-primary-bg);
+  color: var(--sg-text-primary-color);
+  border: 2px solid var(--sg-text-border-color);
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
-.custom-file-input:hover {
-  color: var(--hover-color);
-  box-shadow: var(--box-shadow);
+.sg-text__custom-file-input:hover {
+  color: var(--sg-text-hover-color);
+  box-shadow: var(--sg-text-box-shadow);
 }
 
 /* File info display */
-.file-info {
+.sg-text__file-info {
   margin-top: 10px;
   font-size: 14px;
 }
 
 /* File remove button */
-.file-remove {
+.sg-text__file-remove {
   margin-left: 10px;
   cursor: pointer;
   color: red;
@@ -338,37 +324,37 @@
  TOOLBAR SWITCH
  ========================================
  */
-.toolbar-switch {
+.sg-text__toolbar-switch {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-inline-start: 10px;
   font-size: 14px;
-  background-color: var(--primary-bg);
+  background-color: var(--sg-text-primary-bg);
   border: 2px solid transparent;
   border-radius: 4px;
-  padding: var(--common-padding);
+  padding: var(--sg-text-common-padding);
   cursor: pointer;
 }
 
 
-.toolbar-switch label {
+.sg-text__toolbar-switch label {
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: var(--primary-textColor);
+  color: var(--sg-text-primary-textColor);
 }
 
-.toolbar-switch input[type="checkbox"] {
+.sg-text__toolbar-switch input[type="checkbox"] {
   margin-right: 8px;
   cursor: pointer;
 }
 
-.toolbar-switch:hover {
+.sg-text__toolbar-switch:hover {
   background-color: #f1f1f1;
-  border-color: var(--border-hover-color);
+  border-color: var(--sg-text-border-hover-color);
 }
 
-.toolbar-switch:active {
+.sg-text__toolbar-switch:active {
   box-shadow: none;
 }

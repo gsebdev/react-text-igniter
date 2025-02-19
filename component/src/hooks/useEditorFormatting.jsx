@@ -32,15 +32,17 @@ export const useEditorFormatting = (editorRef) => {
             : range.commonAncestorContainer;
 
         const computedStyle = window.getComputedStyle(parentElement);
+
         const fontWeight = computedStyle.fontWeight;
         const fontStyle = computedStyle.fontStyle;
         const textDecoration = computedStyle.textDecoration;
+        console.log(textDecoration)
 
         // Check text formatting
-        if (fontWeight === 700) styles.add('bold');
+        if (fontWeight === '700') styles.add('bold');
         if (fontStyle === 'italic') styles.add('italic');
-        if (textDecoration === 'underline') styles.add('underline');
-
+        if (textDecoration.indexOf('underline') !== -1) styles.add('underline');
+        console.log(styles)
         let node = parentElement;
         while (node && node !== document) {
           if (node.tagName === 'OL') {
