@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "../../styles/ui-component.css";
-import Tooltip from "./ToolTip";
+import React, { useState } from 'react';
+import '../../styles/ui-component.css';
+import Tooltip from './ToolTip';
 
 const IconDropDown = ({ items, onChange, icon, id, openRight, toolTip }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +17,17 @@ const IconDropDown = ({ items, onChange, icon, id, openRight, toolTip }) => {
   };
 
   return (
-    <div className={`icon-dropdown ${openRight ? "open-right" : ""}`}>
+    <div className={`icon-dropdown ${openRight ? 'open-right' : ''}`}>
       <Tooltip text={toolTip}>
-        <button className="dropbtn" id={id} onMouseDown={handleButtonClick} onClick={(e)=> {e.preventDefault(); e.stopPropagation()}}>
+        <button
+          className="dropbtn"
+          id={id}
+          onMouseDown={handleButtonClick}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+        >
           {icon}
         </button>
       </Tooltip>

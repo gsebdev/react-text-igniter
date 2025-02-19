@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useEditor } from "../../contexts/editorContext.jsx";
-import * as Icons from "../../assets/icon.jsx";
-import { IconButton } from "../ui/Button.jsx";
-import { ImageUploadSelectionDialog, FileUrlDialog } from "../ui/Dialog.jsx";
-import { IconDropDown } from "../ui/Dropdown.jsx";
-import { usePreviewMode } from "../../hooks/usePreviewMode.jsx";
+import React, { useState } from 'react';
+import { useEditor } from '../../contexts/editorContext.jsx';
+import * as Icons from '../../assets/icon.jsx';
+import { IconButton } from '../ui/Button.jsx';
+import { ImageUploadSelectionDialog, FileUrlDialog } from '../ui/Dialog.jsx';
+import { IconDropDown } from '../ui/Dropdown.jsx';
+import { usePreviewMode } from '../../hooks/usePreviewMode.jsx';
 const Toolbar = ({ features }) => {
   const {
     formatText,
@@ -35,13 +35,13 @@ const Toolbar = ({ features }) => {
 
   const handleTableOperation = (operation) => {
     switch (operation) {
-      case "insert":
+      case 'insert':
         insertTable(2, 2);
         break;
-      case "addRow":
+      case 'addRow':
         addTableRow();
         break;
-      case "addColumn":
+      case 'addColumn':
         addTableColumn();
         break;
       default:
@@ -51,19 +51,19 @@ const Toolbar = ({ features }) => {
 
   const handleLayoutOperation = (layout) => {
     switch (layout) {
-      case "single":
+      case 'single':
         insertLayout([100]);
         break;
-      case "two-equal":
+      case 'two-equal':
         insertLayout([50, 50]);
         break;
-      case "three-equal":
+      case 'three-equal':
         insertLayout([33.33, 33.33, 33.33]);
         break;
-      case "40-60":
+      case '40-60':
         insertLayout([40, 60]);
         break;
-      case "60-40":
+      case '60-40':
         insertLayout([60, 40]);
         break;
       default:
@@ -76,72 +76,72 @@ const Toolbar = ({ features }) => {
   const featureButtons = {
     bold: (
       <IconButton
-        onClick={() => formatText("bold")}
+        onClick={() => formatText('bold')}
         toolTip="Bold"
-        isActive={getIsActive("bold")}
+        isActive={getIsActive('bold')}
       >
         <Icons.BoldIcon />
       </IconButton>
     ),
     italic: (
       <IconButton
-        onClick={() => formatText("italic")}
+        onClick={() => formatText('italic')}
         toolTip="Italic"
-        isActive={getIsActive("italic")}
+        isActive={getIsActive('italic')}
       >
         <Icons.ItalicIcon />
       </IconButton>
     ),
     underline: (
       <IconButton
-        onClick={() => formatText("underline")}
+        onClick={() => formatText('underline')}
         toolTip="Underline"
-        isActive={getIsActive("underline")}
+        isActive={getIsActive('underline')}
       >
         <Icons.UnderlineIcon />
       </IconButton>
     ),
     orderedList: (
       <IconButton
-        onClick={() => formatText("insertOrderedList")}
+        onClick={() => formatText('insertOrderedList')}
         toolTip="Ordered List"
-        isActive={getIsActive("orderedList")}
+        isActive={getIsActive('orderedList')}
       >
         <Icons.OrderedListIcon />
       </IconButton>
     ),
     unorderedList: (
       <IconButton
-        onClick={() => formatText("insertUnorderedList")}
+        onClick={() => formatText('insertUnorderedList')}
         toolTip="Unordered List"
-        isActive={getIsActive("unorderedList")}
+        isActive={getIsActive('unorderedList')}
       >
         <Icons.UnOrderedListIcon />
       </IconButton>
     ),
     justifyLeft: (
       <IconButton
-        onClick={() => formatText("justifyLeft")}
+        onClick={() => formatText('justifyLeft')}
         toolTip="Justify Left"
-        isActive={getIsActive("justifyLeft")}
+        isActive={getIsActive('justifyLeft')}
       >
         <Icons.AlignLeftIcon />
       </IconButton>
     ),
     justifyCenter: (
       <IconButton
-        onClick={() => formatText("justifyCenter")}
+        onClick={() => formatText('justifyCenter')}
         toolTip="Justify Center"
-        isActive={getIsActive("justifyCenter")}
+        isActive={getIsActive('justifyCenter')}
       >
         <Icons.AlignCenterIcon />
       </IconButton>
     ),
     justifyRight: (
       <IconButton
-        onClick={() => formatText("justifyRight")}
+        onClick={() => formatText('justifyRight')}
         toolTip="Justify Right"
-        isActive={getIsActive("justifyRight")}
+        isActive={getIsActive('justifyRight')}
       >
         <Icons.AlignRightIcon />
       </IconButton>
@@ -151,7 +151,7 @@ const Toolbar = ({ features }) => {
         <IconButton
           onClick={() => setUrlDialogOpen(true)}
           toolTip="Create Link"
-          isActive={getIsActive("createLink")}
+          isActive={getIsActive('createLink')}
         >
           <Icons.LinkIcon />
         </IconButton>
@@ -161,7 +161,7 @@ const Toolbar = ({ features }) => {
           title="Provide URL"
           linkText=""
           link=""
-          onSubmit={(data) => addLink(data.text, data.url)}
+          onSubmit={(data, range) => addLink(data.text, data.url, range)}
         />
       </>
     ),
@@ -170,7 +170,7 @@ const Toolbar = ({ features }) => {
         <IconButton
           onClick={() => setImageDialogOpen(true)}
           toolTip="Insert Image/Video"
-          isActive={getIsActive("insertImage")}
+          isActive={getIsActive('insertImage')}
         >
           <Icons.ImageIcon />
         </IconButton>
@@ -184,18 +184,18 @@ const Toolbar = ({ features }) => {
     ),
     superscript: (
       <IconButton
-        onClick={() => formatText("superscript")}
+        onClick={() => formatText('superscript')}
         toolTip="Superscript"
-        isActive={getIsActive("superscript")}
+        isActive={getIsActive('superscript')}
       >
         <Icons.SuperScriptIcon />
       </IconButton>
     ),
     subscript: (
       <IconButton
-        onClick={() => formatText("subscript")}
+        onClick={() => formatText('subscript')}
         toolTip="Subscript"
-        isActive={getIsActive("subscript")}
+        isActive={getIsActive('subscript')}
       >
         <Icons.SubScriptIcon />
       </IconButton>
@@ -204,11 +204,11 @@ const Toolbar = ({ features }) => {
       <IconDropDown
         id="tableDropdown"
         icon={<Icons.TableIcon />}
-        toolTip={"Table"}
+        toolTip={'Table'}
         items={[
-          { value: "insert", label: "Insert Table" },
-          { value: "addRow", label: "Add Row" },
-          { value: "addColumn", label: "Add Column" },
+          { value: 'insert', label: 'Insert Table' },
+          { value: 'addRow', label: 'Add Row' },
+          { value: 'addColumn', label: 'Add Column' },
         ]}
         onChange={handleTableOperation}
       />
@@ -217,13 +217,13 @@ const Toolbar = ({ features }) => {
       <IconDropDown
         id="layoutDropdown"
         icon={<Icons.LayoutIcon />}
-        toolTip={"Layout"}
+        toolTip={'Layout'}
         items={[
-          { value: "single", label: "Single Column" },
-          { value: "two-equal", label: "Two Equal Columns" },
-          { value: "three-equal", label: "Three Equal Columns" },
-          { value: "40-60", label: "40-60" },
-          { value: "60-40", label: "60-40" },
+          { value: 'single', label: 'Single Column' },
+          { value: 'two-equal', label: 'Two Equal Columns' },
+          { value: 'three-equal', label: 'Three Equal Columns' },
+          { value: '40-60', label: '40-60' },
+          { value: '60-40', label: '60-40' },
         ]}
         onChange={handleLayoutOperation}
       />
@@ -232,16 +232,16 @@ const Toolbar = ({ features }) => {
       <IconDropDown
         icon={<Icons.HeadingIcon />}
         items={[
-          { value: "p", label: "Paragraph" },
-          { value: "h1", label: "Heading 1" },
-          { value: "h2", label: "Heading 2" },
-          { value: "h3", label: "Heading 3" },
-          { value: "h4", label: "Heading 4" },
-          { value: "h5", label: "Heading 5" },
-          { value: "h6", label: "Heading 6" },
+          { value: 'p', label: 'Paragraph' },
+          { value: 'h1', label: 'Heading 1' },
+          { value: 'h2', label: 'Heading 2' },
+          { value: 'h3', label: 'Heading 3' },
+          { value: 'h4', label: 'Heading 4' },
+          { value: 'h5', label: 'Heading 5' },
+          { value: 'h6', label: 'Heading 6' },
         ]}
         onChange={handleHeadingChange}
-        toolTip={"Headings"}
+        toolTip={'Headings'}
       />
     ),
   };
@@ -255,7 +255,7 @@ const Toolbar = ({ features }) => {
             checked={isToolbarVisible}
             onChange={toggleToolbarVisibility}
           />
-          {!isToolbarVisible ? "Preview Mode" : "Edit Mode"}
+          {!isToolbarVisible ? 'Preview Mode' : 'Edit Mode'}
         </label>
       </div>
       {!isToolbarVisible &&

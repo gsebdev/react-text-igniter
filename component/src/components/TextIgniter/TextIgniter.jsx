@@ -1,13 +1,9 @@
 /* eslint-disable react/display-name */
-import React, {
-  useImperativeHandle,
-  forwardRef,
-  useEffect,
-} from "react";
-import { EditorProvider, useEditor } from "../../contexts/editorContext.jsx";
-import Toolbar from "./Toolbar.jsx";
-import Editor from "./Editor.jsx";
-import "../../styles/text-igniter.css";
+import React, { useImperativeHandle, forwardRef, useEffect } from 'react';
+import { EditorProvider, useEditor } from '../../contexts/editorContext.jsx';
+import Toolbar from './Toolbar.jsx';
+import Editor from './Editor.jsx';
+import '../../styles/text-igniter.css';
 
 const TextIgniterContent = forwardRef(
   ({ features, height, onChange, defaultContent }, ref) => {
@@ -21,14 +17,15 @@ const TextIgniterContent = forwardRef(
     }));
 
     useEffect(() => {
-      
       if (editorRef?.current && !!defaultContent) {
-       editorRef.current.innerHTML = defaultContent;
+        editorRef.current.innerHTML = defaultContent;
       }
     }, []);
 
     useEffect(() => {
-      html !== null && onChange && typeof onChange === "function" ? onChange(html) : undefined;
+      html !== null && onChange && typeof onChange === 'function'
+        ? onChange(html)
+        : undefined;
     }, [html, onChange]);
 
     return (
@@ -37,7 +34,7 @@ const TextIgniterContent = forwardRef(
         <Editor height={height} />
       </div>
     );
-  }
+  },
 );
 
 const TextIgniter = forwardRef((props, ref) => (

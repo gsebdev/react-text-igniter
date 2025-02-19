@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import "../../styles/ui-component.css";
-import Tooltip from "./ToolTip";
+import React, { useState } from 'react';
+import '../../styles/ui-component.css';
+import Tooltip from './ToolTip';
 
-const AppButton = ({ type = "primary", children, onClick, disabled = false }) => {
+const AppButton = ({
+  type = 'primary',
+  children,
+  onClick,
+  disabled = false,
+}) => {
   const className = `button button-${type}`;
-  
+
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     onClick();
-  }
+  };
 
   return (
     <button className={className} onClick={handleClick} disabled={disabled}>
@@ -19,12 +24,11 @@ const AppButton = ({ type = "primary", children, onClick, disabled = false }) =>
 };
 
 const IconButton = ({ children, onClick, id, toolTip, isActive }) => {
-  
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     onClick();
-  }
+  };
 
   return (
     <Tooltip text={toolTip}>
@@ -36,9 +40,7 @@ const IconButton = ({ children, onClick, id, toolTip, isActive }) => {
           }
         `}
       </style>
-      <div
-        className={`toolbarBtnDiv ${isActive ? "active" : ""}`}
-      >
+      <div className={`toolbarBtnDiv ${isActive ? 'active' : ''}`}>
         <button className="toolbarBtn" onClick={handleClick} id={id}>
           {children}
         </button>
@@ -53,7 +55,7 @@ const LinkButton = ({ text, url, onEdit, onDelete }) => {
   const handleClickLinkBtn = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleClickEdit = (e) => {
@@ -73,23 +75,23 @@ const LinkButton = ({ text, url, onEdit, onDelete }) => {
       className="link-button-container"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      style={{ display: "inline-block", position: "relative" }}
+      style={{ display: 'inline-block', position: 'relative' }}
     >
       <button className="link-button" onClick={handleClickLinkBtn}>
         {text}
       </button>
-    
+
       {hover && (
         <div
           className="link-options"
           style={{
-            position: "absolute",
-            top: "100%",
-            left: "0",
-            minWidth: "80px",
-            background: "white",
-            border: "1px solid #ccc",
-            padding: "4px",
+            position: 'absolute',
+            top: '100%',
+            left: '0',
+            minWidth: '80px',
+            background: 'white',
+            border: '1px solid #ccc',
+            padding: '4px',
           }}
         >
           <button className="toolbarBtn" onClick={onEdit} id="linkEditBtn">

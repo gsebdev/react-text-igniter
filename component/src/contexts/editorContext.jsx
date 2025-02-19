@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useRef, useCallback } from "react";
-import { useEditorFormatting } from "../hooks/useEditorFormatting.jsx";
-import { useEditorState } from "../hooks/useEditorState.jsx";
-import { useTableOperations } from "../hooks/useTableOperation.jsx";
-import { useHeadingState } from "../hooks/useHeadingState.jsx";
+import React, { createContext, useContext, useRef, useCallback } from 'react';
+import { useEditorFormatting } from '../hooks/useEditorFormatting.jsx';
+import { useEditorState } from '../hooks/useEditorState.jsx';
+import { useTableOperations } from '../hooks/useTableOperation.jsx';
+import { useHeadingState } from '../hooks/useHeadingState.jsx';
 const EditorContext = createContext();
 
 export const EditorProvider = ({ children }) => {
@@ -14,13 +14,14 @@ export const EditorProvider = ({ children }) => {
     addImageOrVideo,
     addLink,
     activeStyles,
-    applyHeading
+    applyHeading,
   } = useEditorFormatting(editorRef);
 
   const state = useEditorState(editorRef, updateDataAttributes);
-  const { insertTable, addTableRow, addTableColumn, insertLayout } = useTableOperations(editorRef);
+  const { insertTable, addTableRow, addTableColumn, insertLayout } =
+    useTableOperations(editorRef);
   const headingState = useHeadingState();
-  
+
   const getHtml = useCallback(() => {
     return editorRef.current ? editorRef.current.innerHTML : '';
   }, [editorRef]);
@@ -36,7 +37,7 @@ export const EditorProvider = ({ children }) => {
       const result = {
         type: node.nodeName.toLowerCase(),
         attributes: {},
-        children: []
+        children: [],
       };
 
       // Parse attributes
@@ -46,7 +47,7 @@ export const EditorProvider = ({ children }) => {
       }
 
       // Parse children
-      node.childNodes.forEach(child => {
+      node.childNodes.forEach((child) => {
         result.children.push(parseNode(child));
       });
 

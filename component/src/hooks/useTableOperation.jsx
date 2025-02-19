@@ -1,31 +1,34 @@
-import { useCallback } from "react";
+import { useCallback } from 'react';
 
 export const useTableOperations = (editorRef) => {
-  const insertTable = useCallback((rows = 2, cols = 2) => {
-    const editor = editorRef.current;
-    if (editor) {
-      const table = document.createElement('table');
-      table.style.width = '100%';
-      table.style.border = '1px solid #ccc';
-      table.style.borderCollapse = 'collapse';
+  const insertTable = useCallback(
+    (rows = 2, cols = 2) => {
+      const editor = editorRef.current;
+      if (editor) {
+        const table = document.createElement('table');
+        table.style.width = '100%';
+        table.style.border = '1px solid #ccc';
+        table.style.borderCollapse = 'collapse';
 
-      for (let i = 0; i < rows; i++) {
-        const row = table.insertRow();
-        for (let j = 0; j < cols; j++) {
-          const cell = row.insertCell();
-          cell.style.border = '1px solid #ccc';
-          cell.style.padding = '5px';
-          cell.style.height = '30px';
-          cell.style.width = `${100 / cols}%`;
-          cell.contentEditable = true;
+        for (let i = 0; i < rows; i++) {
+          const row = table.insertRow();
+          for (let j = 0; j < cols; j++) {
+            const cell = row.insertCell();
+            cell.style.border = '1px solid #ccc';
+            cell.style.padding = '5px';
+            cell.style.height = '30px';
+            cell.style.width = `${100 / cols}%`;
+            cell.contentEditable = true;
+          }
         }
-      }
 
-      editor.appendChild(table);
-      editor.appendChild(document.createElement('br'));
-      editor.dispatchEvent(new Event('change'));
-    }
-  }, [editorRef]);
+        editor.appendChild(table);
+        editor.appendChild(document.createElement('br'));
+        editor.dispatchEvent(new Event('change'));
+      }
+    },
+    [editorRef],
+  );
 
   const addTableRow = useCallback(() => {
     const editor = editorRef.current;
@@ -70,30 +73,33 @@ export const useTableOperations = (editorRef) => {
     }
   }, [editorRef]);
 
-  const insertLayout = useCallback((columns) => {
-    const editor = editorRef.current;
-    if (editor) {
-      const table = document.createElement('table');
-      table.className = 'layout-table';
-      table.style.width = '100%';
-      table.style.border = '1px solid #ccc';
-      table.style.borderCollapse = 'collapse';
+  const insertLayout = useCallback(
+    (columns) => {
+      const editor = editorRef.current;
+      if (editor) {
+        const table = document.createElement('table');
+        table.className = 'layout-table';
+        table.style.width = '100%';
+        table.style.border = '1px solid #ccc';
+        table.style.borderCollapse = 'collapse';
 
-      const row = table.insertRow();
-      columns.forEach((colWidth) => {
-        const cell = row.insertCell();
-        cell.style.border = '1px solid #ccc';
-        cell.style.padding = '5px';
+        const row = table.insertRow();
+        columns.forEach((colWidth) => {
+          const cell = row.insertCell();
+          cell.style.border = '1px solid #ccc';
+          cell.style.padding = '5px';
           cell.style.height = '30px';
-        cell.style.width = `${colWidth}%`;
-        cell.contentEditable = true;
-      });
+          cell.style.width = `${colWidth}%`;
+          cell.contentEditable = true;
+        });
 
-      editor.appendChild(table);
-      editor.appendChild(document.createElement('br'));
-      editor.dispatchEvent(new Event('change'));
-    }
-  }, [editorRef]);
+        editor.appendChild(table);
+        editor.appendChild(document.createElement('br'));
+        editor.dispatchEvent(new Event('change'));
+      }
+    },
+    [editorRef],
+  );
 
   return { insertTable, addTableRow, addTableColumn, insertLayout };
 };

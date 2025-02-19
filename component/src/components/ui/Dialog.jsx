@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
-import "../../styles/ui-component.css";
-import { AppButton, IconButton } from "./Button.jsx";
-import * as Icons from "../../assets/icon.jsx";
+import React, { useEffect, useRef, useState } from 'react';
+import '../../styles/ui-component.css';
+import { AppButton, IconButton } from './Button.jsx';
+import * as Icons from '../../assets/icon.jsx';
 
 // Image/Video Dialog
-const ImageUploadSelectionDialog = ({ isOpen, onClose, onSubmit, title, children }) => {
+const ImageUploadSelectionDialog = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  title,
+  children,
+}) => {
   const [file, setFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
-  const [error, setError] = useState("");
+  const [imageUrl, setImageUrl] = useState('');
+  const [error, setError] = useState('');
 
   // valid extensions for image and video.
-  const validImageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "webp"];
-  const validVideoExtensions = ["mp4", "avi", "mov", "wmv", "flv", "webm"];
+  const validImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+  const validVideoExtensions = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'];
 
   // Reset dialog state when it is opened
   useEffect(() => {
@@ -26,24 +32,24 @@ const ImageUploadSelectionDialog = ({ isOpen, onClose, onSubmit, title, children
   };
 
   const resetToDefault = () => {
-    setImageUrl("");
+    setImageUrl('');
     setFile(null);
-    setError("");
+    setError('');
   };
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+      const fileExtension = selectedFile.name.split('.').pop().toLowerCase();
       if (
         validImageExtensions.includes(fileExtension) ||
         validVideoExtensions.includes(fileExtension)
       ) {
         setFile(selectedFile);
-        setError("");
+        setError('');
       } else {
         setFile(null);
-        setError("Invalid file type. Please select an image or video file.");
+        setError('Invalid file type. Please select an image or video file.');
       }
     }
   };
@@ -53,7 +59,7 @@ const ImageUploadSelectionDialog = ({ isOpen, onClose, onSubmit, title, children
       onSubmit({ file, imageUrl });
       onClose();
     } else {
-      setError("Please select a file or image url");
+      setError('Please select a file or image url');
     }
   };
 
@@ -71,7 +77,7 @@ const ImageUploadSelectionDialog = ({ isOpen, onClose, onSubmit, title, children
         <div className="dialog-body">
           <div className="container">
             <label htmlFor="file-input" className="custom-file-input">
-              {!file ? "Select file" : "Reselect file"}
+              {!file ? 'Select file' : 'Reselect file'}
             </label>
             <input
               type="file"
@@ -99,15 +105,25 @@ const ImageUploadSelectionDialog = ({ isOpen, onClose, onSubmit, title, children
   );
 };
 
-const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) => {
-  const [url, setUrl] = useState(link || ""); // Initialize with link if provided
-  const [text, setText] = useState(linkText || ""); // Initialize with title if provided
-  const [error, setError] = useState("");
+const FileUrlDialog = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  linkText,
+  link,
+  children,
+}) => {
+  const [url, setUrl] = useState(link || ''); // Initialize with link if provided
+  const [text, setText] = useState(linkText || ''); // Initialize with title if provided
+  const [error, setError] = useState('');
+  const range = useRef(null);
 
-// Reset dialog state after submission
+  // Reset dialog state after submission
   useEffect(() => {
     if (isOpen) {
       resetToDefault();
+      const selection = window.getSelection();
+      range.current = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
     }
   }, [isOpen, link, linkText]);
 
@@ -117,9 +133,13 @@ const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) 
   };
 
   const resetToDefault = () => {
-    setUrl(link || "");
-    setText(linkText || "");
-    setError("");
+    const selection =
+      window.getSelection().rangeCount > 0
+        ? window.getSelection().toString()
+        : null;
+    setUrl(link || selection || '');
+    setText(linkText || selection || '');
+    setError('');
   };
 
   const handleLinkUrl = (event) => {
@@ -131,17 +151,17 @@ const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) 
   };
 
   const handleSubmit = () => {
-    let errorMessage = "";
+    let errorMessage = '';
     if (!url) {
-      errorMessage += "Please provide a file URL. ";
+      errorMessage += 'Please provide an URL.';
     }
     if (!text) {
-      errorMessage += "Please provide a title for the link.";
+      errorMessage += 'Please provide a text for the link.';
     }
     if (errorMessage) {
       setError(errorMessage);
     } else {
-      onSubmit({ text, url });
+      onSubmit({ text, url }, range.current);
       onClose();
     }
   };
@@ -152,7 +172,7 @@ const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) 
     <div className="dialog-overlay">
       <div className="dialog-container">
         <div className="dialog-header">
-          {"Enter Title"}
+          {'Enter Title'}
           <IconButton onClick={onClose} id="dialogClose">
             <Icons.CloseIcon />
           </IconButton>
@@ -162,7 +182,7 @@ const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) 
             <input
               type="text"
               className="image-url-input"
-              placeholder="Link Text"
+              placeholder="Texte du lien"
               value={text}
               onChange={handleLinkText}
             />
@@ -171,7 +191,7 @@ const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) 
             <input
               type="text"
               className="image-url-input"
-              placeholder="Paste image URL"
+              placeholder="URL du lien"
               value={url}
               onChange={handleLinkUrl}
             />
@@ -180,9 +200,9 @@ const FileUrlDialog = ({ isOpen, onClose, onSubmit, linkText, link, children }) 
         </div>
         <div className="dialog-footer">
           <AppButton type="cancel" onClick={closeDialog}>
-            Cancel
+            Annuler
           </AppButton>
-          <AppButton onClick={handleSubmit}>Submit</AppButton>
+          <AppButton onClick={handleSubmit}>Valider</AppButton>
         </div>
       </div>
     </div>

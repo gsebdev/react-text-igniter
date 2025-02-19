@@ -1,1 +1,1 @@
-export { default } from "./TextIgniter";
+export { default } from './TextIgniter';
